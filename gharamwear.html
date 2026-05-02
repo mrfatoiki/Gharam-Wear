@@ -1,0 +1,915 @@
+<!---Mohamed RIyad Fatoiki--->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gharam Wear</title>
+  <!-- Liaison avec la feuille de styles externe -->
+  <link rel="stylesheet" href="gharamwear.css">
+</head>
+<body>
+  <header id="header" role="banner">
+
+    <!-- Logo du site -->
+    <div class="logo">Gharam<span>Wear</span></div>
+
+    <!-- Menu de navigation principal -->
+    <nav aria-label="Navigation principale">
+      <ul id="nav-menu">
+        <!-- data-nav : identifiant de la section cible (utilisé par JS) -->
+        <li><a href="#" data-nav="accueil" class="active">Accueil</a></li>
+        <li><a href="#" data-nav="boutique-homme">Homme</a></li>
+        <li><a href="#" data-nav="boutique-femme">Femme</a></li>
+        <li><a href="#" data-nav="soldes">Soldes</a></li>
+        <li><a href="#" data-nav="a-propos">À Propos</a></li>
+        <li><a href="#" data-nav="faq">FAQ</a></li>
+        <li><a href="#" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Bouton panier avec badge compteur -->
+    <div style="display:flex; align-items:center; gap:1rem;">
+      <button id="panier-icone" aria-label="Voir le panier">
+        Panier
+        <span id="panier-badge">0</span>
+      </button>
+
+      <!-- Bouton hamburger (mobile uniquement, affiché via CSS) -->
+      <button id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menu déroulant mobile (caché par défaut) -->
+  <nav id="mobile-menu" aria-label="Menu mobile">
+    <ul>
+      <li><a href="#" data-nav="accueil">Accueil</a></li>
+      <li><a href="#" data-nav="boutique-homme">Homme</a></li>
+      <li><a href="#" data-nav="boutique-femme">Femme</a></li>
+      <li><a href="#" data-nav="soldes">Soldes</a></li>
+      <li><a href="#" data-nav="a-propos">À Propos</a></li>
+      <li><a href="#" data-nav="faq">FAQ</a></li>
+      <li><a href="#" data-nav="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content">
+
+
+    <!-- SECTION 1 : ACCUEIL -->
+    <section id="accueil" class="page-section" role="main">
+
+      <!-- Héros dual : deux univers côte-à-côte -->
+      <div class="hero-dual" role="banner">
+
+        <!-- Côté Homme -->
+        <div class="hero-cote homme" onclick="afficherSection('boutique-homme')"
+             role="button" tabindex="0" aria-label="Aller à la boutique Homme">
+          <div class="hero-bg"></div>
+          <div class="hero-contenu">
+            <h2>Homme</h2>
+            <p>Collection Printemps 2026</p>
+            <span class="btn-hero">Explorer</span>
+          </div>
+        </div>
+
+        <!-- Séparateur central décoratif -->
+        <div class="hero-separateur" aria-hidden="true">
+          <span>GW</span>
+        </div>
+
+        <!-- Côté Femme -->
+        <div class="hero-cote femme" onclick="afficherSection('boutique-femme')"
+             role="button" tabindex="0" aria-label="Aller à la boutique Femme">
+          <div class="hero-bg"></div>
+          <div class="hero-contenu">
+            <h2>Femme</h2>
+            <p>Collection Printemps 2026</p>
+            <span class="btn-hero">Explorer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Carrousel des nouveautés === -->
+      <div class="nouveautes">
+        <div class="section-titre">
+          <h3>Nouveautés de la semaine</h3>
+          <p>Les dernières pièces sélectionnées pour vous</p>
+          <div class="ligne-or"></div>
+        </div>
+
+        <!--CARROUSEL NOUVEAUTÉS — HTML STATIQUE -->
+        <div class="carrousel-wrapper">
+          <div class="carrousel-piste" id="carrousel-piste">
+
+            <!-- Carte nouveauté 1-->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(1)">
+              <img src="1.jpeg" alt="Tee Classic Linen" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-h">Homme</span>
+                <h4>Polo en Maille</h4>
+                <p class="prix">250 MAD</p>
+              </div>
+            </div>
+
+            <!-- Carte nouveauté 2-->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(3)">
+              <img src="pantalon.jpg" alt="pantalon" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-h">Homme</span>
+                <h4>Pantalon Droit</h4>
+                <p class="prix">300 MAD</p>
+              </div>
+            </div>
+
+            <!-- Carte nouveauté 3-->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(6)">
+              <img src="vestee.jpg" alt="veste" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-h">Homme</span>
+                <h4>Veste en Velours Fourrée</h4>
+                <p class="prix">600 MAD</p>
+              </div>
+            </div>
+
+            <!-- Carte nouveauté 4 -->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(7)">
+              <img src="robemuse.jpg" alt="Robe Muse" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-f">Femme</span>
+                <h4>Robe Gharam</h4>
+                <p class="prix">800 MAD</p>
+              </div>
+            </div>
+
+            <!-- Carte nouveauté 5-->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(10)">
+              <img src="robe.jpg" alt="Robe Sirène" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-f">Femme</span>
+                <h4>Robe Sirène</h4>
+                <p class="prix">900 MAD</p>
+              </div>
+            </div>
+
+            <!-- Carte nouveauté 6 -->
+            <div class="carte-nouveaute" onclick="ouvrirDetail(12)">
+              <img src="sac.jpg" alt="Sac Cabas" class="img-nouveaute">
+              <div class="info-carte">
+                <span class="tag-genre tag-f">Femme</span>
+                <h4>Sac Cabas</h4>
+                <p class="prix">500 MAD</p>
+              </div>
+            </div>
+
+          </div><!-- fin carrousel-piste -->
+        </div>
+
+        <!-- Contrôles du carrousel -->
+        <div class="carrousel-controles">
+          <button class="btn-carrousel" id="btn-prev" aria-label="Précédent">&#8592;</button>
+          <!-- Les dots (points de navigation) sont générés par JS -->
+          <div class="dots-carrousel" id="dots-carrousel"></div>
+          <button class="btn-carrousel" id="btn-next" aria-label="Suivant">&#8594;</button>
+        </div>
+      </div>
+
+    </section>
+    <!-- Fin Section Accueil -->
+
+    <!-- SECTION 2 : BOUTIQUE HOMME-->
+    <section id="boutique-homme" class="page-section">
+
+      <!-- En-tête de la boutique -->
+      <div class="boutique-header" data-titre="HOMME">
+        <h2>Gharam<span class="accent-homme">Homme</span></h2>
+        <p>Vêtements masculins contemporains · Collection 2026</p>
+      </div>
+
+      <!-- Barre de filtres dynamiques -->
+      <div class="filtres" role="search" aria-label="Filtrer les produits homme">
+        <label>Filtrer :</label>
+        <!-- Chaque bouton a un data-cat correspondant aux catégories des produits -->
+        <button class="btn-filtre actif" data-cat="Tous">Tous</button>
+        <button class="btn-filtre" data-cat="T-shirts">T-shirts</button>
+        <button class="btn-filtre" data-cat="Vestes">Vestes</button>
+        <button class="btn-filtre" data-cat="Pantalons">Pantalons</button>
+        <button class="btn-filtre" data-cat="Accessoires">Accessoires</button>
+
+        <label style="margin-left:auto;">Trier :</label>
+        <!-- Sélecteur de tri — écouté par JS -->
+        <select class="filtre-select" id="tri-homme" aria-label="Trier les produits">
+          <option value="defaut">Par défaut</option>
+          <option value="prix-asc">Prix croissant</option>
+          <option value="prix-desc">Prix décroissant</option>
+        </select>
+      </div>
+
+      <!-- Grille de produits-->
+      <div class="grille-produits" id="grille-homme" role="list" aria-label="Produits homme">
+
+        <!--PRODUITS HOMME-->
+
+        <!-- Carte 1-->
+        <div class="carte-produit" data-categorie="T-shirts" data-prix="250" onclick="ouvrirDetail(1)">
+          <div class="img-produit">
+            <span class="badge-nouveaute">Nouveau</span>
+            <img src="1.jpeg" alt="Tee Classic Linen">
+          </div>
+          <div class="infos">
+            <span class="categorie">T-shirts</span>
+            <h4>Polo en Maille Côtelée Beige</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">250 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(1)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 2-->
+        <div class="carte-produit" data-categorie="Vestes" data-prix="500" onclick="ouvrirDetail(2)">
+          <div class="img-produit">
+             <img src="veste.jpg" alt="veste">
+          </div>
+          <div class="infos">
+            <span class="categorie">Vestes</span>
+            <h4>Blazer Gharam</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">500 MAD</span>
+              <span class="prix-ancien">700 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(2)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 3-->
+        <div class="carte-produit" data-categorie="Pantalons" data-prix="300" onclick="ouvrirDetail(3)">
+          <div class="img-produit">
+            <span class="badge-nouveaute">Nouveau</span>
+            <img src="pantalon.jpg" alt="pantalon">
+          </div>
+          <div class="infos">
+            <span class="categorie">Pantalons</span>
+            <h4>Pantalon Droit</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">300 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(3)">Voir détail</button>
+          </div>
+        </div>
+        <!-- Carte 4-->
+        <div class="carte-produit" data-categorie="T-shirts" data-prix="200" onclick="ouvrirDetail(4)">
+          <div class="img-produit">
+            <img src="t-shirt.jpg" alt="t-shirt">
+          </div>
+          <div class="infos">
+            <span class="categorie">T-shirts</span>
+            <h4>T-shirt Gharam</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">200 MAD</span>
+              <span class="prix-ancien">270 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(4)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 5-->
+        <div class="carte-produit" data-categorie="Accessoires" data-prix="170" onclick="ouvrirDetail(5)">
+          <div class="img-produit">
+            <img src="lunette.jpg" alt="lunette">
+          </div>
+          <div class="infos">
+            <span class="categorie">Accessoires</span>
+            <h4>Lunette Gharam</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">170 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(5)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 6-->
+        <div class="carte-produit" data-categorie="Vestes" data-prix="600" onclick="ouvrirDetail(6)">
+          <div class="img-produit">
+            <span class="badge-nouveaute">Nouveau</span>
+            <img src="vestee.jpg" alt="VESTE">
+          </div>
+          <div class="infos">
+            <span class="categorie">Vestes</span>
+            <h4>Veste en Velours Fourrée</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">600 MAD</span>
+              <span class="prix-ancien">800 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(6)">Voir détail</button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- Fin Section Boutique Homme -->
+
+
+    <!--SECTION 3 : BOUTIQUE FEMME-->
+    <section id="boutique-femme" class="page-section">
+      <!-- En-tête de la boutique -->
+      <div class="boutique-header" data-titre="FEMME">
+        <h2>Gharam<span class="accent-femme">Femme</span></h2>
+        <p>Mode féminine élégante · Collection 2026</p>
+      </div>
+
+      <!-- Barre de filtres dynamiques -->
+      <div class="filtres" role="search" aria-label="Filtrer les produits femme">
+        <label>Filtrer :</label>
+        <button class="btn-filtre actif" data-cat="Tous">Tous</button>
+        <button class="btn-filtre" data-cat="Robes">Robes</button>
+        <button class="btn-filtre" data-cat="Hauts">Hauts</button>
+        <button class="btn-filtre" data-cat="Pantalons">Pantalons</button>
+        <button class="btn-filtre" data-cat="Manteaux">Manteaux</button>
+        <button class="btn-filtre" data-cat="Accessoires">Accessoires</button>
+
+        <label style="margin-left:auto;">Trier :</label>
+        <select class="filtre-select" id="tri-femme" aria-label="Trier les produits">
+          <option value="defaut">Par défaut</option>
+          <option value="prix-asc">Prix croissant</option>
+          <option value="prix-desc">Prix décroissant</option>
+        </select>
+      </div>
+
+      <!-- Grille de produits-->
+      <div class="grille-produits" id="grille-femme" role="list" aria-label="Produits femme">
+
+        <!--PRODUITS FEMME — Cartes statiques HTML-->
+        <!-- Carte 7-->
+        <div class="carte-produit" data-categorie="Robes" data-prix="800" onclick="ouvrirDetail(7)">
+          <div class="img-produit">
+            <span class="badge-nouveaute">Nouveau</span>
+            <img src="robemuse.jpg" alt="Robe Gharam">
+          </div>
+          <div class="infos">
+            <span class="categorie">Robes</span>
+            <h4>Robe Gharam</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">800 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(7)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 8-->
+        <div class="carte-produit" data-categorie="Hauts" data-prix="270" onclick="ouvrirDetail(8)">
+          <div class="img-produit">
+            <img src="Blouse.jpg" alt="Blouse">
+          </div>
+          <div class="infos">
+            <span class="categorie">Hauts</span>
+            <h4>Chemise Corset</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">270 MAD</span>
+              <span class="prix-ancien">350 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(8)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 9-->
+        <div class="carte-produit" data-categorie="Pantalons" data-prix="300" onclick="ouvrirDetail(9)">
+          <div class="img-produit">
+            <img src="leg.jpg" alt="Pantalon">
+          </div>
+          <div class="infos">
+            <span class="categorie">Pantalons</span>
+            <h4>Pantalon Palazzo</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">300 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(9)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 10-->
+        <div class="carte-produit" data-categorie="Robes" data-prix="900" onclick="ouvrirDetail(10)">
+          <div class="img-produit">
+            <span class="badge-nouveaute">Nouveau</span>
+            <img src="robe.jpg" alt="Robe Sirène">
+          </div>
+          <div class="infos">
+            <span class="categorie">Robes</span>
+            <h4>Robe Sirène</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">900 MAD</span>
+              <span class="prix-ancien">1200 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(10)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 11-->
+        <div class="carte-produit" data-categorie="Manteaux" data-prix="1200" onclick="ouvrirDetail(11)">
+          <div class="img-produit">
+            <img src="manteau.jpg" alt="Mini-Trench Ceinturé Noir">
+          </div>
+          <div class="infos">
+            <span class="categorie">Manteaux</span>
+            <h4>Mini-Trench Ceinturé Noir</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">1200 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(11)">Voir détail</button>
+          </div>
+        </div>
+
+        <!-- Carte 12-->
+        <div class="carte-produit" data-categorie="Accessoires" data-prix="500" onclick="ouvrirDetail(12)">
+          <div class="img-produit">
+            <img src="sac.jpg" alt="Sac Cabas">
+          </div>
+          <div class="infos">
+            <span class="categorie">Accessoires</span>
+            <h4>Sac Cabas</h4>
+            <div class="prix-ligne">
+              <span class="prix-actuel">500 MAD</span>
+              <span class="prix-ancien">650 MAD</span>
+            </div>
+            <button class="btn-voir" onclick="event.stopPropagation(); ouvrirDetail(12)">Voir détail</button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- Fin Section Boutique Femme -->
+
+
+    <!--SECTION 4 : DÉTAIL DU PRODUIT-->
+    <section id="detail-produit" class="page-section">
+      <div id="detail-produit-inner">
+        <!-- Fil d'Ariane, mis à jour par JS -->
+        <div id="detail-breadcrumb-wrapper"
+             style="padding:1.5rem 2.5rem 0; font-size:.78rem; color:var(--gris); letter-spacing:.08em;">
+          <span id="detail-breadcrumb">Boutique › Produit</span>
+        </div>
+
+        <!-- Grille 2 colonnes : image | infos — contenu mis à jour par JS via ouvrirDetail() -->
+        <div class="detail-grille" style="padding:2rem 2.5rem 4rem;">
+          <div class="detail-image">
+            <img src="" alt="" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <!-- Informations et actions -->
+          <div class="detail-infos">
+            <!-- Catégorie et genre -->
+            <p class="breadcrumb">
+              <span id="detail-cat">Catégorie</span> ·
+              <span id="detail-genre-tag">Genre</span>
+            </p>
+
+            <!-- Nom du produit -->
+            <h2 id="detail-nom"></h2>
+
+            <!-- Prix -->
+            <p class="prix-detail" id="detail-prix"></p>
+
+            <!-- Description -->
+            <p class="description" id="detail-desc"></p>
+
+            <!-- Sélecteur de taille -->
+            <label class="taille-label" for="taille-select">Sélectionner une taille</label>
+            <select class="taille-select" id="taille-select" aria-required="true">
+              <option value="">Choisir une taille</option>
+            </select>
+
+            <!-- Bouton d'ajout au panier -->
+            <button class="btn-ajouter" id="btn-ajouter">
+              Ajouter au panier
+            </button>
+
+            <!-- Tags décoratifs -->
+            <div class="detail-tags" aria-hidden="true">
+              <span>Livraison gratuite &gt; 600MAD</span>
+              <span>Retours 20 jours</span>
+              <span>Paiement sécurisé</span>
+            </div>
+          </div>
+
+        </div>
+      
+    </section>
+    <!-- Fin Section Détail Produit -->
+
+
+    <!--SECTION 5 : PANIER-->
+    <section id="panier" class="page-section">
+      <div class="panier-wrapper" id="contenu-panier">
+        <h2>Mon panier</h2>
+        <!-- Message panier vide-->
+        <div id="panier-vide" class="panier-vide">
+          <div class="emoji-vide">🛒</div>
+          <p>Votre panier est vide.</p>
+          <button class="btn-continuer" onclick="afficherSection('accueil')">
+            Continuer mes achats
+          </button>
+        </div>
+        <!-- Tableau du panier (affiché si panier non vide) -->
+        <table class="table-panier" id="tableau-panier" style="display:none;"
+               aria-label="Contenu du panier">
+          <thead>
+            <tr>
+              <th>Article</th>
+              <th>Quantité</th>
+              <th>Prix unit.</th>
+              <th>Sous-total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <!-- Les lignes sont injectées dynamiquement par rendrePanier() -->
+          <tbody id="corps-tableau-panier"></tbody>
+        </table>
+
+        <!-- Bloc récapitulatif des totaux -->
+        <div id="panier-total-bloc" class="panier-total" style="display:none;">
+          <div class="ligne-total">
+            <span>Sous-total</span>
+            <span id="sous-total">0.00 MAD</span>
+          </div>
+          <div class="ligne-total">
+            <span>Livraison</span>
+            <span id="livraison">55 MAD</span>
+          </div>
+          <div class="ligne-total grand">
+            <span>Total</span>
+            <span id="total-final">0.00 MAD</span>
+          </div>
+          <button class="btn-commander">Passer la commande</button>
+        </div>
+
+      </div>
+    </section>
+    <!-- Fin Section Panier -->
+
+
+    <!--SECTION 6 : CONTACT-->
+    <section id="contact" class="page-section">
+      <div class="contact-wrapper">
+        <!-- Colonne gauche : informations de contact -->
+        <div class="contact-info">
+          <h2>Gharam<br><em>Wear</em></h2>
+          <p>Une question sur une commande, un avis sur notre collection, ou juste envie d'échanger ? Notre équipe vous répond sous 48h.</p>
+          <div class="contact-adresse">
+            <div>
+              <span class="icone-c">📍</span>
+              <span>Rue de Gharam, Marrakech</span>
+            </div>
+            <div>
+              <span class="icone-c">✉️</span>
+              <span>contact@gharamwear.ma</span>
+            </div>
+            <div>
+              <span class="icone-c">📞</span>
+              <span>+212 7 70 45 14 81</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite : formulaire de contact -->
+        <div class="contact-form-wrapper">
+          <h3>Envoyer un message</h3>
+
+          <!-- novalidate : la validation HTML5 native est désactivée, on utilise notre JS -->
+          <form id="form-contact" novalidate>
+
+            <!-- Champ Nom -->
+            <div class="groupe-champ">
+              <label for="contact-nom">Votre nom *</label>
+              <input type="text" id="contact-nom" placeholder="Ex : Gharam Wear"
+                     autocomplete="name">
+              <!-- Message d'erreur affiché par JS si le champ est invalide -->
+              <span class="erreur-champ" id="erreur-nom" role="alert"></span>
+            </div>
+
+            <!-- Champ Email -->
+            <div class="groupe-champ">
+              <label for="contact-email">Adresse e-mail *</label>
+              <input type="email" id="contact-email" placeholder="Ex : contact@gharamwear.ma"
+                     autocomplete="email">
+              <span class="erreur-champ" id="erreur-email" role="alert"></span>
+            </div>
+
+            <!-- Champ Sujet -->
+            <div class="groupe-champ">
+              <label for="contact-sujet">Sujet *</label>
+              <select id="contact-sujet">
+                <option value="">-- Choisir un sujet --</option>
+                <option>Question sur une commande</option>
+                <option>Retour / Remboursement</option>
+                <option>Conseil stylisme</option>
+                <option>Partenariat</option>
+                <option>Autre</option>
+              </select>
+              <span class="erreur-champ" id="erreur-sujet" role="alert"></span>
+            </div>
+
+            <!-- Champ Message -->
+            <div class="groupe-champ">
+              <label for="contact-message">Votre message *</label>
+              <textarea id="contact-message" placeholder="Écrivez votre message ici…"></textarea>
+              <span class="erreur-champ" id="erreur-message" role="alert"></span>
+            </div>
+            <!-- Bouton d'envoi -->
+            <button type="submit" class="btn-envoyer">Envoyer le message</button>
+            <!-- Message de succès affiché par JS si tout est valide -->
+            <div class="message-succes" id="succes-contact" role="status">
+              ✓ Message envoyé avec succès ! Nous vous répondrons sous 48h.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Fin Section Contact -->
+
+
+    <!--SECTION 7 : SOLDES / PROMOTIONS-->
+    <section id="soldes" class="page-section">
+      <!-- Bannière promotionnelle -->
+      <div class="soldes-banner">
+        <div class="soldes-banner-contenu">
+          <p class="soldes-label">Offres limitées</p>
+          <h2>SOLDES<br><span>Jusqu'à &minus;50%</span></h2>
+          <p class="soldes-sous">Sur une sélection de vêtements Homme &amp; Femme</p>
+        </div>
+        <!-- Décompte animé décoratif -->
+        <div class="soldes-badges">
+          <div class="soldes-badge">-20%</div>
+          <div class="soldes-badge grand">-50%</div>
+          <div class="soldes-badge">-30%</div>
+        </div>
+      </div>
+      <!-- Grille des articles en promotion -->
+      <div class="grille-produits" id="grille-soldes" style="padding:2.5rem;"
+           role="list" aria-label="Articles en promotion">
+        <!-- Injecté par JS -->
+      </div>
+    </section>
+    <!-- Fin Section Soldes -->
+
+
+    <!--SECTION 8 : À PROPOS / NOTRE HISTOIRE-->
+    <section id="a-propos" class="page-section">
+      <!-- En-tête hero -->
+      <div class="apropos-hero">
+        <div class="apropos-hero-contenu">
+          <p class="apropos-label">Notre histoire</p>
+          <h2>Deux univers,<br>une seule passion.</h2>
+        </div>
+      </div>
+      <!-- Corps de la page À Propos -->
+      <div class="apropos-corps">
+        <!-- Section Histoire -->
+        <div class="apropos-bloc">
+          <div class="apropos-texte">
+            <span class="apropos-num">01</span>
+            <h3>Comment tout a commencé</h3>
+            <p><b>Gharam Wear</b> est né en 2018 d'une idée simple : proposer des vêtements de qualité, pensés séparément pour l'homme et la femme, mais unis par le même souci du détail. 
+            Deux fondateurs, deux amoureux, un seul objectif : rendre la mode accessible sans sacrifier l'élégance.</p>
+          </div>
+          <div class="apropos-visuel" style="background:#f0ede8;">
+            <span>
+              <img src="gww.png" alt="logo">
+            </span>
+          </div>
+        </div>
+        <!-- Section Valeurs -->
+        <div class="apropos-bloc inverse">
+          <div class="apropos-visuel" style="background:#ede8f0;">
+            <span>
+              <img src="2.png" alt="logo">
+            </span>
+          </div>
+          <div class="apropos-texte">
+            <span class="apropos-num">02</span>
+            <h3>Nos valeurs</h3>
+            <p>Chez <b>Gharam Wear</b>, notre passion s'étend bien au-delà du style.
+            Nous croyons en une mode consciente, où chaque pièce est choisie avec soin pour sa qualité, sa durabilité et le respect de notre environnement.
+            Nos partenaires partagent nos exigences éthiques, car nous sommes convaincus que s'habiller avec amour, c'est avant tout faire le choix de consommer mieux.</p>
+          </div>
+        </div>
+        <!-- Chiffres clés -->
+        <div class="apropos-chiffres">
+          <div class="chiffre-bloc">
+            <span class="chiffre-grand">8+</span>
+            <span class="chiffre-label">Ans d'existence</span>
+          </div>
+          <div class="chiffre-bloc">
+            <span class="chiffre-grand">54K</span>
+            <span class="chiffre-label">Clients satisfaits</span>
+          </div>
+          <div class="chiffre-bloc">
+            <span class="chiffre-grand">200+</span>
+            <span class="chiffre-label">Références en stock</span>
+          </div>
+          <div class="chiffre-bloc">
+            <span class="chiffre-grand">12</span>
+            <span class="chiffre-label">Pays livrés</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Fin Section À Propos -->
+
+    <!--SECTION 9 : FAQ / AIDE-->
+    <section id="faq" class="page-section">
+      <!-- En-tête -->
+      <div class="boutique-header" data-titre="FAQ">
+        <h2>Questions <span class="accent-homme">fréquentes</span></h2>
+        <p>Tout ce que vous avez besoin de savoir sur vos commandes et notre service</p>
+      </div>
+      <div class="faq-wrapper">
+        <!-- Catégories de FAQ -->
+        <div class="faq-categories">
+          <button class="faq-cat actif" data-cat="commandes">Commandes</button>
+          <button class="faq-cat" data-cat="livraison">Livraison</button>
+          <button class="faq-cat" data-cat="retours">Retours</button>
+          <button class="faq-cat" data-cat="paiement">Paiement</button>
+        </div>
+        <!-- Accordéon FAQ — Commandes -->
+        <div class="faq-groupe" data-cat="commandes">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Comment passer une commande ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Naviguez dans nos boutiques Homme ou Femme, choisissez votre article,
+              sélectionnez une taille et cliquez sur "Ajouter au panier". Une fois votre
+              sélection terminée, accédez au panier via l'icône en haut à droite et
+              finalisez votre commande.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Puis-je modifier ma commande après validation ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Vous disposez d'un délai de 2 heures après la confirmation pour modifier
+              ou annuler votre commande en nous contactant. Passé ce délai, la commande
+              est transmise à notre entrepôt et ne peut plus être modifiée.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Comment suivre mon colis ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Dès l'expédition, vous recevez un email avec un numéro de suivi.
+              Vous pouvez suivre votre colis directement sur le site du transporteur
+              ou depuis votre espace client.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Accordéon FAQ — Livraison -->
+        <div class="faq-groupe" data-cat="livraison" style="display:none;">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Quels sont les délais de livraison ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>En Maroc, comptez 2 à 5 jours ouvrés en livraison
+              standard, et 24h à 48h en livraison express. Pour l'Europe, le délai
+              est de 8 à 15 jours ouvrés.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              La livraison est-elle gratuite ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>La livraison standard est offerte pour toute commande supérieure à
+              600 MAD. En dessous de ce montant, les frais de port sont de 55 MAD.
+              La livraison express est disponible à 120 MAD quelle que soit la commande.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Accordéon FAQ — Retours -->
+        <div class="faq-groupe" data-cat="retours" style="display:none;">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Quelle est la politique de retour ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Vous bénéficiez de 20 jours à compter de la réception pour retourner
+              un article. Il doit être dans son état d'origine, non porté, avec les
+              étiquettes attachées. Les frais de retour sont à votre charge sauf en
+              cas d'article défectueux.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Quand serai-je remboursé(e) ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Le remboursement est effectué sous 7 à 10 jours ouvrés après réception
+              de votre retour, sur le moyen de paiement utilisé lors de l'achat.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Accordéon FAQ — Paiement -->
+        <div class="faq-groupe" data-cat="paiement" style="display:none;">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Quels moyens de paiement acceptez-vous ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Nous acceptons les cartes Visa, Mastercard, PayPal
+              et le paiement en 3× sans frais via notre partenaire. Tous les paiements
+              sont sécurisés par chiffrement SSL.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Mon paiement est-il sécurisé ? <span class="faq-icone">+</span>
+            </button>
+            <div class="faq-reponse">
+              <p>Absolument. Nous utilisons un protocole de sécurité SSL 256 bits.
+              Vos données bancaires ne sont jamais stockées sur nos serveurs et
+              chaque transaction est authentifiée via 3D Secure.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Lien vers le formulaire de contact -->
+        <div class="faq-contact-cta">
+          <p>Vous n'avez pas trouvé votre réponse ?</p>
+          <button class="btn-hero" style="border-color:var(--or);color:var(--or);"
+                  onclick="afficherSection('contact')">
+            Contactez-nous
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Fin Section FAQ -->
+  </main>
+  <!-- Fin du contenu principal -->
+
+  <!--TOAST NOTIFICATION — Notification temporaire (JS) -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="toast-titre" id="toast-titre">Notification</div>
+    <div class="toast-msg"   id="toast-msg">Message</div>
+  </div>
+
+  <!--FOOTER — Toujours visible en bas de page-->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-grille">
+      <!-- Logo et description -->
+      <div>
+        <div class="footer-logo">GHARAM<span>WEAR</span></div>
+        <p class="footer-desc">
+          Gharam Wear, c'est deux univers, une même passion pour la mode.
+          Des pièces sélectionnées pour leur style, leur qualité, et leur durabilité.
+        </p>
+      </div>
+      <!-- Colonne Boutiques -->
+      <div class="footer-col">
+        <h4>Boutiques</h4>
+        <ul>
+          <li><a href="#" data-nav="boutique-homme">Collection Homme</a></li>
+          <li><a href="#" data-nav="boutique-femme">Collection Femme</a></li>
+          <li><a href="#" data-nav="accueil">Nouveautés</a></li>
+        </ul>
+      </div>
+      <!-- Colonne Aide -->
+      <div class="footer-col">
+        <h4>Aide</h4>
+        <ul>
+          <li><a href="#" data-nav="faq">FAQ</a></li>
+          <li><a href="#" data-nav="contact">Contact</a></li>
+          <li><a href="#" data-nav="a-propos">À Propos</a></li>
+          <li><a href="#" data-nav="soldes">Soldes</a></li>
+        </ul>
+      </div>
+      <!-- Colonne Légal -->
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- footer -->
+    <div class="footer-bas">
+      <span>© 2026 Gharam Wear · Tous droits réservés</span>
+      <!-- Réseaux sociaux -->
+      <div class="footer-reseaux" aria-label="Réseaux sociaux">
+        <a href="https://www.instagram.com/fatoikii?igsh=MWh1Z3BzNHhydTU2eA==" title="Instagram">IG</a>
+        <a href="https://www.linkedin.com/in/mohamed-riyad-fatoiki" title="Linkedin">IN</a>
+      </div>
+    </div>
+  </footer>
+  <!-- Liaison avec le fichier JavaScript externe-->
+  <script src="gharamwear.js"></script>
+</body>
+</html>
+ 
